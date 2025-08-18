@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     #
     "rest_framework",
     "auth_app",
+    "tasks",
+    "django_filters",
 ]
 
 MIDDLEWARE = [
@@ -61,9 +63,9 @@ TEMPLATES = [
 
 # Static files configuration
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+# ]
 
 WSGI_APPLICATION = "taskmanager.wsgi.application"
 
@@ -113,8 +115,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = "static/"
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
@@ -126,6 +126,8 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
 }
 
 AUTH_USER_MODEL = "auth_app.CustomUser"
